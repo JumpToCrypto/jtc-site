@@ -150,7 +150,160 @@
         const t = document.createElement('textarea');
         t.value = text; document.body.appendChild(t); t.select();
         try{ document.execCommand('copy'); ok.style.display='inline'; setTimeout(()=> ok.style.display='none', 1500);}finally{ document.body.removeChild(t); }
+      }<!-- ===== Live Price / Chart ===== -->
+<section id="chart" style="margin-top:48px">
+  <h2 style="font-size:24px;margin-bottom:12px">Live Chart</h2>
+  <!-- Dexscreener token embed (ye token address se pairs list dikhayega) -->
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;border:1px solid rgba(255,255,255,.08)">
+    <iframe
+      src="https://dexscreener.com/bsc/0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC?embed=1&theme=dark"
+      style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+      allow="clipboard-write; encrypted-media"
+    ></iframe>
+  </div>
+  <p style="opacity:.7;font-size:12px;margin-top:8px">
+    *If no pair shows, replace with your pair address like: 
+    <code>https://dexscreener.com/bsc/&lt;pairAddress&gt;?embed=1</code>
+  </p>
+</section>
+<!-- ===== Add to MetaMask Button ===== -->
+<section id="wallet" style="margin-top:48px">
+  <h2 style="font-size:24px;margin-bottom:12px">Add JTC to your wallet</h2>
+  <button id="addMetaMaskBtn"
+    style="padding:10px 16px;border-radius:10px;background:#f6851b;color:#111;font-weight:700;border:0;cursor:pointer">
+    Add JTC to MetaMask
+  </button>
+  <p style="opacity:.7;margin-top:8px;font-size:13px">
+    Works on MetaMask (desktop & mobile). For Trust Wallet, import the contract manually.
+  </p>
+</section>
+
+<script>
+  (function () {
+    const tokenAddress = '0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC';
+    const tokenSymbol  = 'JTC';
+    const tokenDecimals = 18;
+    const tokenImage   = location.origin + '/logo.png';
+
+    async function addToMetaMask() {
+      if (!window.ethereum) {
+        alert('Please install MetaMask first.');
+        return;
       }
+      // Ensure BSC is added
+      try {
+        await window.ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [{
+            chainId: '0x38',
+            chainName: 'BNB Smart Chain',
+            nativeCurrency: { name:'BNB', symbol:'BNB', decimals:18 },
+            rpcUrls: ['https://bsc-dataseed.binance.org/'],
+            blockExplorerUrls: ['https://bscscan.com/']
+          }]
+        });
+      } catch (e) { /* chain may already exist */ }
+
+      // Add token
+      try {
+        const wasAdded = await window.ethereum.request({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20',
+            options: {
+              address: tokenAddress,
+              symbol: tokenSymbol,
+              decimals: tokenDecimals,
+              image: tokenImage
+            }
+          }
+        });
+        if (wasAdded) alert('JTC added to MetaMask!');
+      } catch (err) {
+        console.error(err);
+        alert('MetaMask request was rejected.');
+      }
+    }
+    document.getElementById('addMetaMaskBtn')?.addEventListener('click', addToMetaMask);
+  })();
+</script>
+<!-- ===== Tokenomics ===== -->
+<section id="tokenomics" style="margin-top:48px">
+  <h2 style="font-size:24px;margin-bottom:12px">Tokenomics</h2>
+
+  <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center">
+    <div style="flex:1;min-width:280px">
+      <canvas id="tokenomicsChart" height="220"></canvas>
+    </div>
+    <ul style="flex:1;min-width:280px;line-height:1.9">
+      <li><b>Max Supply:</b> 1,000,000,000 JTC</li>
+      <li><b>Network:</b> BNB Smart Chain (BEP20)</li>
+      <li><b>Taxes (Buy/Sell):</b> 0% / 0%  <span style="opacity:.7">(edit if needed)</span></li>
+      <li><b>Liquidity:</b> Locked (link if available)</li>
+      <li><b>Contract:</b> <code>0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC</code></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // EDIT THESE TOKENOMICS VALUES
+  const tokenomicsData = {
+    labels: ['Liquidity', 'Marketing', 'CEX Reserve', 'Development', 'Airdrop/Community'],
+    values: [50, 15, 15, 10, 10] // percentages must add to 100
+  };
+
+  const ctx = document.getElementById('tokenomicsChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: tokenomicsData.labels,
+      datasets: [{
+        data: tokenomicsData.values,
+        backgroundColor: ['#34d399','#60a5fa','#fbbf24','#f87171','#a78bfa'],
+        borderColor: 'rgba(255,255,255,.06)',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      plugins: { legend: { labels: { color: '#ddd' } } },
+      cutout: '65%'
+    }
+  });
+</script>
+<!-- ===== How to Buy ===== -->
+<section id="howtobuy" style="margin-top:48px">
+  <h2 style="font-size:24px;margin-bottom:12px">How to Buy JTC</h2>
+  <ol style="line-height:1.9">
+    <li>Install <b>MetaMask</b> or <b>Trust Wallet</b> and switch to <b>BNB Smart Chain</b>.</li>
+    <li>Visit <a href="https://pancakeswap.finance/swap?outputCurrency=0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC" target="_blank" rel="noopener">PancakeSwap</a>.</li>
+    <li>Paste JTC contract: <code>0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC</code>.</li>
+    <li>Set slippage if needed (0–2%).</li>
+    <li>Swap BNB → JTC and confirm in wallet.</li>
+  </ol>
+</section>
+<!-- ===== Roadmap ===== -->
+<section id="roadmap" style="margin-top:48px">
+  <h2 style="font-size:24px;margin-bottom:12px">Roadmap</h2>
+  <ul style="list-style:disc;margin-left:18px;line-height:1.9">
+    <li><b>Q3 2025:</b> Website launch, socials, Telegram community, Poocoin/Dexscreener listings.</li>
+    <li><b>Q4 2025:</b> Marketing push, partnerships, utility prototype.</li>
+    <li><b>Q1 2026:</b> CEX listing application, community rewards program.</li>
+    <li><b>Q2 2026:</b> Utility release v1, docs & audit (if applicable).</li>
+  </ul>
+</section>
+<!-- ===== Footer / Disclaimers ===== -->
+<footer style="margin-top:56px;padding:16px 0;border-top:1px solid rgba(255,255,255,.08);opacity:.9">
+  <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between">
+    <div>© <span id="year"></span> JumpToCrypto (JTC). All rights reserved.</div>
+    <div style="font-size:12px;opacity:.7">
+      DYOR • This is not financial advice. Crypto assets are high risk; never invest more than you can afford to lose.
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
     });
   </script>
 </body>
