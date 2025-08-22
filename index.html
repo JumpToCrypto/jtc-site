@@ -33,6 +33,8 @@ ad>
 
   <!-- Theme color (for Android status bar) -->
   <meta name="theme-color" content="#0b1220">
+  <script defer data-domain="jumptocrypto.github.io/jtc-site" src="https://plausible.io/js/script.js"></script>
+
 </head>
 
   <!-- Favicon & Touch Icons -->
@@ -371,5 +373,13 @@ ad>
 
     });
   </script>
+  <script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(console.error);
+  });
+}
+</script>
+
 </body>
 </html>
