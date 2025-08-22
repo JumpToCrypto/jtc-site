@@ -1,0 +1,11 @@
+{
+  "name": "JumpToCrypto (JTC)",
+  "short_name": "JTC",
+  "start_url": "/jtc-site/",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "icons": [
+    { "src": "/jtc-site/apple-touch-icon.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
