@@ -132,7 +132,33 @@ ad>
 <meta name="twitter:title" content="JumpToCrypto (JTC) • BEP20">
 <meta name="twitter:description" content="Official website for JumpToCrypto (JTC) on BNB Smart Chain.">
 <meta name="twitter:image" content="https://jumptocrypto.github.io/jtc-site/og-image.png">
->
+><!-- ===== Quick Action Bar ===== -->
+<div class="cta-bar">
+  <button id="btnCopy" class="btn">Copy Contract</button>
+  <button id="btnAddMM" class="btn">Add to MetaMask</button>
+  <a class="btn primary"
+     href="https://pancakeswap.finance/swap?outputCurrency=0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC&chain=bsc"
+     target="_blank" rel="noopener">
+     Buy on PancakeSwap
+  </a>
+</div>
+
+<style>
+  .cta-bar{
+    position: sticky; top: 0; z-index: 999;
+    display:flex; gap:10px; align-items:center;
+    padding:10px 14px; background:rgba(10,16,27,.9);
+    backdrop-filter: blur(6px); border-bottom:1px solid rgba(255,255,255,.08)
+  }
+  .btn{
+    padding:10px 14px; border-radius:8px; border:1px solid rgba(255,255,255,.14);
+    background:#111827;color:#e6edf3;cursor:pointer
+  }
+  .btn:hover{background:#0f1525}
+  .btn.primary{background:#0ea5e9;border-color:#0ea5e9;color:#081018}
+  .btn.primary:hover{filter:brightness(1.05)}
+</style>
+
 <body>
   <main class="wrap">
     <section class="card">
@@ -378,6 +404,45 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js').catch(console.error);
   });
+}
+</script>
+<script>
+const CONTRACT = '0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC';
+const SYMBOL   = 'JTC';
+const DECIMALS = 18;
+const LOGO_URL = 'https://jumptocrypto.github.io/jtc-site/logo.png';
+
+// Copy Contract
+document.getElementById('btnCopy').addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText(CONTRACT); 
+        toast('Contract copied'); }
+  catch(e){ alert(CONTRACT); }
+});
+
+// Add to MetaMask
+document.getElementById('btnAddMM').addEventListener('click', async () => {
+  if (!window.ethereum) { alert('Please install MetaMask'); return; }
+  try {
+    await window.ethereum.request({
+      method: 'wallet_watchAsset',
+      params: {
+        type: 'ERC20',
+        options: { address: CONTRACT, symbol: SYMBOL, decimals: DECIMALS, image: LOGO_URL }
+      }
+    });
+  } catch (err) { console.log(err); toast('MetaMask request failed'); }
+});
+
+// Tiny toast helper
+function toast(msg){
+  const el=document.createElement('div');
+  el.textContent=msg;
+  Object.assign(el.style,{
+    position:'fixed',bottom:'20px',left:'50%',transform:'translateX(-50%)',
+    background:'rgba(15,23,42,.95)',color:'#e6edf3',padding:'10px 14px',
+    borderRadius:'8px',border:'1px solid rgba(255,255,255,.12)',zIndex:9999
+  });
+  document.body.appendChild(el); setTimeout(()=>el.remove(),1800);
 }
 </script>
 
