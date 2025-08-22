@@ -6,7 +6,10 @@ ad>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JumpToCrypto (JTC) — BNB Smart Chain • BEP20</title>
   <meta name="description" content="Official website for JumpToCrypto (JTC) on BNB Smart Chain (BEP20). Add token, copy contract, and view official links." />
-<head>
+<he<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
+<link rel="manifest" href="manifest.json">
+ad>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>JumpToCrypto (JTC) • BNB Smart Chain</title>
@@ -35,7 +38,10 @@ ad>
   <meta name="theme-color" content="#0b1220">
   <script defer data-domain="jumptocrypto.github.io/jtc-site" src="https://plausible.io/js/script.js"></script>
 
-</head>
+</<!-- PWA colors -->
+<meta name="theme-color" content="#0b1220">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+>
 
   <!-- Favicon & Touch Icons -->
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -387,6 +393,23 @@ ad>
   </ul>
 </section>
 <!-- ===== Footer / Disclaimers ===== -->
+  <section id="faq" style="margin-top:60px">
+  <h2>FAQ</h2>
+  <details><summary>Is JTC audited?</summary>
+    <p>We will publish audit status here. Always DYOR.</p>
+  </details>
+  <details><summary>Is there a tax?</summary>
+    <p>Current tax: 0% (if you change this later, update here).</p>
+  </details>
+  <details><summary>Where is liquidity?</summary>
+    <p>Initial liquidity is/will be on PancakeSwap. Pair address will be posted.</p>
+  </details>
+
+  <h2 style="margin-top:28px">Disclaimer</h2>
+  <p>JTC is a community token. Nothing on this site is financial advice. 
+     Crypto assets are volatile; never invest more than you can afford to lose.</p>
+</section>
+
 <footer style="margin-top:56px;padding:16px 0;border-top:1px solid rgba(255,255,255,.08);opacity:.9">
   <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between">
     <div>© <span id="year"></span> JumpToCrypto (JTC). All rights reserved.</div>
@@ -445,6 +468,10 @@ function toast(msg){
   document.body.appendChild(el); setTimeout(()=>el.remove(),1800);
 }
 </script>
+<footer style="margin:60px 0 20px;opacity:.8;text-align:center">
+  © <span id="y"></span> JumpToCrypto • DYOR • Not financial advice.
+</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 
 </body>
 </html>
