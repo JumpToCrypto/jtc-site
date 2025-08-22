@@ -1,144 +1,157 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>JumpToCrypto (JTC) • BSC (BEP20)</title>
-  <meta name="description" content="Official JumpToCrypto (JTC) website on BNB Smart Chain (BEP20). Contract, links, token details and roadmap.">
-  <link rel="canonical" href="https://jumptocrypto.github.io/jtc-site/">
-  <link rel="icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta name="robots" content="index,follow">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JumpToCrypto (JTC) — BNB Smart Chain • BEP20</title>
+  <meta name="description" content="Official website for JumpToCrypto (JTC) on BNB Smart Chain (BEP20). Add token, copy contract, and view official links." />
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:site_name" content="JumpToCrypto (JTC)">
-  <meta property="og:title" content="JumpToCrypto (JTC) • BSC (BEP20)">
-  <meta property="og:description" content="Official JumpToCrypto (JTC) website on BNB Smart Chain (BEP20).">
-  <meta property="og:url" content="https://jumptocrypto.github.io/jtc-site/">
+  <!-- Favicon & Touch Icons -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Open Graph / Social Preview -->
   <meta property="og:type" content="website">
-  <meta property="og:image" content="og-image.png">
+  <meta property="og:title" content="JumpToCrypto (JTC)">
+  <meta property="og:description" content="BNB Smart Chain • BEP20  —  Official token website">
+  <meta property="og:image" content="https://jumptocrypto.github.io/jtc-site/og-image.png">
+  <meta property="og:url" content="https://jumptocrypto.github.io/jtc-site/">
+
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@JtcJumptocrypto">
+  <meta name="twitter:title" content="JumpToCrypto (JTC)">
+  <meta name="twitter:description" content="BNB Smart Chain • BEP20  —  Official token website">
+  <meta name="twitter:image" content="https://jumptocrypto.github.io/jtc-site/og-image.png">
 
   <style>
     :root{
-      --bg:#0b0e13;--panel:#121826;--muted:#93a0b4;--txt:#e9eef5;--brand:#46c2a9;--border:#1d2534;
+      --bg:#0b1116; --card:#0f1621; --muted:#9aa5b1; --text:#e6ebf5;
+      --brand:#46c2a9; --line:#2b3a4e; --chip:#0e1420; --chip-border:#31405a;
+      --accent:#5687ff;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial}
-    a{color:var(--brand);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:1100px;margin:0 auto;padding:24px}
-    header{display:flex;gap:14px;align-items:center;margin-bottom:14px}
-    .logo{width:42px;height:42px;border-radius:50%;background:#222 url('logo.png') center/cover no-repeat}
-    .title{font-weight:700;font-size:20px}
-    .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px}
-    .grid{display:grid;gap:16px;grid-template-columns:repeat(12,1fr)}
-    .col-12{grid-column:span 12}
-    .col-6{grid-column:span 6}
-    @media (max-width:800px){.col-6{grid-column:span 12}}
-    .muted{color:var(--muted)}
-    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--brand);color:#0a0f14;border:0;border-radius:10px;padding:10px 14px;font-weight:600;cursor:pointer}
-    .btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--border)}
-    .k{font-weight:700;margin-bottom:6px}
-    code{background:#0e1420;border:1px solid var(--border);padding:6px 8px;border-radius:8px}
-    .row{display:flex;gap:10px;flex-wrap:wrap}
-    footer{margin:32px 0 8px;color:var(--muted);text-align:center}
-    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#0f1726;border:1px solid var(--border);color:var(--muted)}
+    body{
+      margin:0; font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text); background:radial-gradient(1200px 800px at -10% -20%, #15332f 0, transparent 60%),
+                         radial-gradient(900px 700px at 110% -10%, #142042 0, transparent 55%),
+                         var(--bg);
+    }
+    .wrap{max-width:1080px; margin:48px auto; padding:0 20px;}
+    .card{
+      background:var(--card); border:1px solid var(--line); border-radius:16px;
+      padding:28px; display:grid; grid-template-columns:220px 1fr; gap:28px;
+      box-shadow:0 10px 40px rgba(0,0,0,.35);
+    }
+    .logo{
+      width:220px; height:220px; border-radius:16px; object-fit:cover; display:block;
+      border:1px solid var(--line); background:#0a0f14;
+    }
+    h1{margin:0 0 6px; font-size:40px; line-height:1.1}
+    .sub{color:var(--muted); margin:0 0 18px}
+    .chips{display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 22px}
+    .chip{
+      background:var(--chip); border:1px solid var(--chip-border); color:var(--text);
+      padding:8px 12px; border-radius:999px; font-weight:600; font-size:14px;
+    }
+    .contract{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:8px 0 20px;
+    }
+    .code{
+      background:#0d121a; border:1px solid var(--line); border-radius:10px;
+      padding:10px 12px; color:var(--text); font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    }
+    .btns{display:flex; flex-wrap:wrap; gap:12px}
+    .btn{
+      appearance:none; border:1px solid var(--line); background:#0d141d; color:var(--text);
+      padding:11px 16px; border-radius:10px; cursor:pointer; font-weight:600;
+    }
+    .btn.brand{background:var(--brand); color:#03110d; border-color:transparent}
+    .grid{
+      margin-top:24px; display:grid; grid-template-columns:1fr 1fr; gap:16px;
+    }
+    .panel{
+      background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px;
+    }
+    .links a{display:block; color:var(--text); text-decoration:none; padding:9px 0; border-bottom:1px solid var(--line)}
+    .links a:last-child{border-bottom:none}
+    footer{color:var(--muted); text-align:center; margin:28px 0}
+    .ok{color:#21d07a; margin-left:6px; display:none}
+    @media (max-width:860px){
+      .card{grid-template-columns:1fr}
+      .logo{width:160px; height:160px}
+      h1{font-size:32px}
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo"></div>
-      <div>
-        <div class="title">JumpToCrypto (JTC)</div>
-        <div class="muted">BNB Smart Chain • BEP20</div>
-      </div>
-    </header>
-
-    <!-- HERO -->
-    <section class="card" style="margin-bottom:16px">
-      <div class="k" style="font-size:22px">To the Moon 🚀</div>
-      <p class="muted" style="margin-top:-4px">Official website for JumpToCrypto (JTC). Add token, copy contract, and join our community.</p>
-
-      <div class="row" style="margin:12px 0 8px">
-        <span class="pill">Decimals: 18</span>
-        <span class="pill">Chain: BSC</span>
-        <span class="pill">Ticker: JTC</span>
-      </div>
-
-      <div class="row" style="align-items:center;margin:10px 0">
-        <div class="muted">Contract</div>
-        <code id="addr">0x...</code>
-        <button class="btn" id="copyBtn">Copy</button>
-      </div>
-
-      <div class="row" style="margin-top:6px">
-        <a class="btn" id="bscBtn" target="_blank">View on BscScan</a>
-        <a class="btn ghost" id="buyBtn" target="_blank">Buy on PancakeSwap</a>
-      </div>
-    </section>
-
-    <!-- LINKS -->
-    <section class="grid" style="margin-bottom:16px">
-      <div class="card col-6">
-        <div class="k">Official Links</div>
-        <ul class="muted" style="padding-left:18px;margin:8px 0">
-          <li><a id="siteLink" target="_blank">Website</a></li>
-          <li><a href="https://x.com/JtcJumptocrypto" target="_blank">Twitter / X</a></li>
-          <li><a href="https://t.me/JTC_Chat" target="_blank">Telegram</a></li>
-          <li><a id="scanLink" target="_blank">BscScan</a></li>
-          <li><a id="pcsLink" target="_blank">PancakeSwap</a></li>
-        </ul>
-      </div>
-
-      <div class="card col-6">
-        <div class="k">Token Details</div>
-        <div class="muted">Max Supply: 1,000,000,000 JTC<br>Decimals: 18<br>Standard: BEP20</div>
-      </div>
-    </section>
-
-    <!-- ROADMAP (sample) -->
+  <main class="wrap">
     <section class="card">
-      <div class="k">Roadmap (short)</div>
-      <ol class="muted" style="padding-left:18px;margin:8px 0">
-        <li>Launch website & social channels</li>
-        <li>Community growth & marketing</li>
-        <li>Listings, partnerships & utilities</li>
-      </ol>
+      <img src="logo.png" alt="JTC Logo" class="logo" width="220" height="220">
+      <div>
+        <h1>JumpToCrypto (JTC)</h1>
+        <p class="sub">BNB Smart Chain • BEP20</p>
+
+        <div class="chips">
+          <span class="chip">Ticker: JTC</span>
+          <span class="chip">Decimals: 18</span>
+          <span class="chip">Chain: BSC</span>
+        </div>
+
+        <div class="contract">
+          <strong>Contract</strong>
+          <span id="addr" class="code">0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC</span>
+          <button class="btn" id="copyBtn">Copy</button>
+          <span class="ok" id="ok">✓ Copied</span>
+        </div>
+
+        <div class="btns">
+          <a class="btn brand" href="https://bscscan.com/token/0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC" target="_blank" rel="noopener">View on BscScan</a>
+          <a class="btn" href="https://pancakeswap.finance/" target="_blank" rel="noopener">Buy on PancakeSwap</a>
+          <a class="btn" href="https://t.me/JtcJumpcrypto" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel links">
+        <h3>Official Links</h3>
+        <a href="https://jumptocrypto.github.io/jtc-site/">Website</a>
+        <a href="https://bscscan.com/token/0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC">BscScan</a>
+        <a href="https://x.com/yourhandle">X (Twitter)</a>
+        <a href="https://pancakeswap.finance/">PancakeSwap</a>
+      </div>
+      <div class="panel">
+        <h3>Token Details</h3>
+        <p>Max Supply: <strong>1,000,000,000</strong> JTC</p>
+        <p>Decimals: <strong>18</strong></p>
+        <p>Standard: <strong>BEP20</strong></p>
+      </div>
     </section>
 
     <footer>
-      © JumpToCrypto • All rights reserved.<br>
-      DYOR • Not financial advice.
+      © <span id="y"></span> JumpToCrypto • All rights reserved. • DYOR • Not financial advice.
     </footer>
-  </div>
+  </main>
 
   <script>
-    // ====== CONFIG ======
-    const CONTRACT = '0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC';
-    const WEBSITE  = 'https://jumptocrypto.github.io/jtc-site/';
-    // ====================
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-    // populate contract + links
-    const bsc = 'https://bscscan.com/token/' + CONTRACT;
-    const pcs = 'https://pancakeswap.finance/swap?outputCurrency=' + CONTRACT;
-
-    document.getElementById('addr').textContent = CONTRACT;
-    document.getElementById('bscBtn').href = bsc;
-    document.getElementById('buyBtn').href = pcs;
-
-    document.getElementById('siteLink').href = WEBSITE;
-    document.getElementById('scanLink').href = bsc;
-    document.getElementById('pcsLink').href = pcs;
-
-    document.getElementById('copyBtn').addEventListener('click', async () => {
-      await navigator.clipboard.writeText(CONTRACT);
-      const old = document.getElementById('copyBtn').textContent;
-      document.getElementById('copyBtn').textContent = 'Copied!';
-      setTimeout(()=>document.getElementById('copyBtn').textContent = old, 1100);
+    const btn = document.getElementById('copyBtn');
+    const ok  = document.getElementById('ok');
+    btn.addEventListener('click', async () => {
+      const text = document.getElementById('addr').textContent.trim();
+      try{
+        await navigator.clipboard.writeText(text);
+        ok.style.display = 'inline';
+        setTimeout(()=> ok.style.display='none', 1500);
+      }catch(e){
+        // Fallback
+        const t = document.createElement('textarea');
+        t.value = text; document.body.appendChild(t); t.select();
+        try{ document.execCommand('copy'); ok.style.display='inline'; setTimeout(()=> ok.style.display='none', 1500);}finally{ document.body.removeChild(t); }
+      }
     });
   </script>
 </body>
-</html> 
+</html>
