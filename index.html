@@ -123,6 +123,26 @@ ript>
 </head>
 <body>
   <div class="wrap">
+<section id="how" style="margin-top:26px">
+  <div class="card">
+    <div class="k" style="margin-bottom:8px">How to buy JTC</div>
+    <ol class="muted" style="line-height:1.8">
+      <li>Install/Unlock <b>MetaMask</b> (or Trust Wallet).</li>
+      <li>Switch to <b>BNB Smart Chain</b> (Chain ID 56).</li>
+      <li>Add some <b>BNB</b> for gas.</li>
+      <li>Open <a id="buyBtn2" target="_blank">PancakeSwap</a>, paste the contract below:</li>
+    </ol>
+    <div class="card" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:10px">
+      <div class="muted">Contract</div>
+      <code id="addr2">0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC</code>
+      <button class="btn copy" id="copyBtn2">Copy</button>
+    </div>
+    <div class="btns">
+      <a class="btn" id="bscBtn2" target="_blank">View on BscScan</a>
+      <a class="btn ghost" id="buyBtn3" target="_blank">Buy on PancakeSwap</a>
+    </div>
+  </div>
+</section>
 
     <header>
       <div class="brand">
@@ -209,6 +229,42 @@ ript>
         <a class="pill" target="_blank" id="siteBtn">Website</a>
       </div>
     </section>
+<section id="faq" style="margin-top:26px">
+  <div class="card">
+    <div class="k" style="margin-bottom:8px">FAQ</div>
+
+    <details class="muted" style="padding:10px 0;border-top:1px solid #223">
+      <summary style="cursor:pointer;color:#e8eaee">Is JTC audited / KYC?</summary>
+      <div style="margin-top:8px">If you plan an audit/KYC, share the link here. Until then, transparent note.</div>
+    </details>
+
+    <details class="muted" style="padding:10px 0;border-top:1px solid #223">
+      <summary style="cursor:pointer;color:#e8eaee">Taxes and slippage?</summary>
+      <div style="margin-top:8px">Currently 0% buy/sell tax. Use 0.5–1% slippage if needed.</div>
+    </details>
+
+    <details class="muted" style="padding:10px 0;border-top:1px solid #223">
+      <summary style="cursor:pointer;color:#e8eaee">Total supply?</summary>
+      <div style="margin-top:8px">1,000,000,000 JTC (18 decimals).</div>
+    </details>
+  </div>
+</section>
+<script>
+// mirror address + links for how-to-buy block
+document.getElementById('addr2').textContent = CONTRACT;
+
+document.getElementById('copyBtn2')?.addEventListener('click', async ()=>{
+  await navigator.clipboard.writeText(CONTRACT);
+});
+
+document.getElementById('bscBtn2').href =
+  'https://bscscan.com/token/' + CONTRACT;
+
+['buyBtn2','buyBtn3'].forEach(id=>{
+  const el = document.getElementById(id);
+  if (el) el.href = 'https://pancakeswap.finance/swap?outputCurrency=' + CONTRACT;
+});
+</script>
 
     <footer>
       <div>© <span id="yr"></span> JumpToCrypto • All rights reserved.</div>
