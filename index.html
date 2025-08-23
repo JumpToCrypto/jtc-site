@@ -166,13 +166,22 @@
   <!-- FACTS + LINKS -->
   <section class="wrap grid cols-2">
     <div class="card">
-      <h2>Token Details</h2>
-      <ul class="clean">
-        <li><strong>Max Supply:</strong> 1,000,000,000 JTC</li>
-        <li><strong>Chain:</strong> BSC</li>
-        <li><strong>Standard:</strong> BEP20</li>
-      </ul>
-    </div>
+  <h2>Token Details</h2>
+  <ul class="clean">
+    <li><strong>Max Supply:</strong> 1,000,000,000 JTC</li>
+    <li><strong>Chain:</strong> BSC</li>
+    <li><strong>Standard:</strong> BEP20</li>
+    <li style="margin-top:8px">
+      <strong>Contract:</strong>
+      <span class="kbd" id="contractText">0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC</span>
+    </li>
+  </ul>
+
+  <div class="btns" style="margin-top:12px">
+    <button class="cta secondary" id="copyContractBtn" type="button">Copy Contract</button>
+    <button class="cta" id="addToWalletBtn" type="button">Add to MetaMask</button>
+  </div>
+</div>
 
     <div class="card" id="links">
       <h2>Official Links</h2>
@@ -186,48 +195,108 @@
     </div>
   </section>
 
-  <!-- ROADMAP -->
-  <section class="wrap card" id="roadmap">
-    <h2>Roadmap</h2>
-    <div class="grid cols-2 road" style="margin-top:12px">
-      <div>
+ <!-- ROADMAP -->
+<section class="wrap card" id="roadmap">
+  <h2>Roadmap</h2>
+
+  <!-- Status legend -->
+  <div style="display:flex; gap:10px; flex-wrap:wrap; margin:8px 0 14px">
+    <span class="rm-badge rm-done">✅ Completed</span>
+    <span class="rm-badge rm-now">🟡 In‑Progress</span>
+    <span class="rm-badge rm-next">🔜 Planned</span>
+  </div>
+
+  <ol class="rm-timeline">
+    <!-- PHASE 1 -->
+    <li class="rm-phase">
+      <div class="rm-head">
+        <span class="rm-dot rm-done"></span>
         <h3>Phase 1 — Launch</h3>
-        <ul>
-          <li>Token Deployment on BSC</li>
-          <li>Website & Socials Live</li>
-          <li>Initial Liquidity & First CEX Listing Research</li>
-          <li>Community Airdrop & Giveaways</li>
-        </ul>
       </div>
-      <div>
+      <ul>
+        <li class="rm-done">Token Deployment on BSC</li>
+        <li class="rm-done">Website & Socials Live</li>
+        <li class="rm-now">Initial Liquidity & First CEX Listing Research</li>
+        <li class="rm-next">Community Airdrop & Giveaways</li>
+      </ul>
+    </li>
+
+    <!-- PHASE 2 -->
+    <li class="rm-phase">
+      <div class="rm-head">
+        <span class="rm-dot rm-now"></span>
         <h3>Phase 2 — Growth</h3>
-        <ul>
-          <li>Influencer & KOL Marketing</li>
-          <li>Partnerships & Integrations</li>
-          <li>DexScreener / CMC / CG Tracking</li>
-          <li>Community Proposals</li>
-        </ul>
       </div>
-      <div>
+      <ul>
+        <li class="rm-now">Influencer & KOL Marketing</li>
+        <li class="rm-next">Partnerships & Integrations</li>
+        <li class="rm-next">DexScreener / CMC / CG Tracking</li>
+        <li class="rm-next">Community Proposals</li>
+      </ul>
+    </li>
+
+    <!-- PHASE 3 -->
+    <li class="rm-phase">
+      <div class="rm-head">
+        <span class="rm-dot rm-next"></span>
         <h3>Phase 3 — Utility</h3>
-        <ul>
-          <li>Staking / Farming Research</li>
-          <li>Tools & Mini-Apps</li>
-          <li>Audits (as budget allows)</li>
-          <li>Ambassador Program</li>
-        </ul>
       </div>
-      <div>
+      <ul>
+        <li class="rm-next">Staking / Farming Research</li>
+        <li class="rm-next">Tools & Mini‑Apps</li>
+        <li class="rm-next">Audits (as budget allows)</li>
+        <li class="rm-next">Ambassador Program</li>
+      </ul>
+    </li>
+
+    <!-- PHASE 4 -->
+    <li class="rm-phase">
+      <div class="rm-head">
+        <span class="rm-dot rm-next"></span>
         <h3>Phase 4 — Expansion</h3>
-        <ul>
-          <li>Further CEX Listings</li>
-          <li>Broader Partnerships</li>
-          <li>DAO Experiments</li>
-          <li>Long-term Sustainability</li>
-        </ul>
       </div>
-    </div>
-  </section>
+      <ul>
+        <li class="rm-next">Further CEX Listings</li>
+        <li class="rm-next">Broader Partnerships</li>
+        <li class="rm-next">DAO Experiments</li>
+        <li class="rm-next">Long‑term Sustainability</li>
+      </ul>
+    </li>
+  </ol>
+
+  <!-- Roadmap styles (scoped) -->
+  <style>
+    #roadmap .rm-badge{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 10px; border-radius:999px; font-size:12px;
+      border:1px solid var(--line); background:var(--chip); color:var(--text);
+    }
+    #roadmap .rm-timeline{
+      list-style:none; margin:0; padding:0;
+      display:grid; gap:18px;
+    }
+    @media(min-width: 860px){
+      #roadmap .rm-timeline{ grid-template-columns: 1fr 1fr; }
+    }
+    #roadmap .rm-phase{
+      background:var(--card); border:1px solid var(--line);
+      border-radius:var(--radius); padding:16px;
+    }
+    #roadmap .rm-head{ display:flex; align-items:center; gap:10px; margin-bottom:6px }
+    #roadmap .rm-dot{
+      width:12px; height:12px; border-radius:50%; border:1px solid var(--line);
+      display:inline-block;
+    }
+    #roadmap .rm-dot.rm-done{ background:#16f2b6 }
+    #roadmap .rm-dot.rm-now{ background:#f59e0b }
+    #roadmap .rm-dot.rm-next{ background:#334155 }
+    #roadmap ul{ margin:6px 0 0 0; padding:0; list-style:none }
+    #roadmap li + li{ margin-top:6px }
+    #roadmap li.rm-done{ color:#A7F3D0 }   /* light green */
+    #roadmap li.rm-now{ color:#FDE68A }    /* light yellow */
+    #roadmap li.rm-next{ color:var(--muted) }
+  </style>
+</section>
 
 <!-- TOKENOMICS -->
 <section class="wrap card" id="tokenomics">
@@ -364,15 +433,73 @@
       loading="lazy"></iframe>
   </section>
 
-  <!-- TRANSPARENCY -->
-  <section class="wrap card">
-    <h2>Transparency</h2>
-    <ul class="clean">
-      <li>LP Lock Proof: <a target="_blank" href="#">(add link when locked)</a></li>
-      <li>Owner: <a target="_blank" href="#">Renounced / Timelock (tx)</a></li>
-      <li>Audit: <a target="_blank" href="#">(add report if any)</a></li>
-    </ul>
-  </section>
+<!-- FAQ -->
+<section class="wrap card" id="faq">
+  <h2>FAQ</h2>
+
+  <details style="margin-top:10px">
+    <summary><strong>JTC ka contract address kya hai?</strong></summary>
+    <div class="muted" style="margin-top:8px">
+      0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC (BSC • BEP20)
+    </div>
+  </details>
+
+  <details>
+    <summary><strong>Buy tax / sell tax?</strong></summary>
+    <div class="muted" style="margin-top:8px">0% (jab update ho, yahan change karein).</div>
+  </details>
+
+  <details>
+    <summary><strong>Liquidity locked hai?</strong></summary>
+    <div class="muted" style="margin-top:8px">Lock hone par proof link Transparency section me add hoga.</div>
+  </details>
+
+  <details>
+    <summary><strong>Dex chart kahan milega?</strong></summary>
+    <div class="muted" style="margin-top:8px">
+      Liquidity add ke baad DexScreener embed yahan live ho jayega.
+    </div>
+  </details>
+</section>
+
+ <!-- TRANSPARENCY -->
+<section class="wrap card" id="transparency">
+  <h2>Transparency</h2>
+
+  <div class="grid cols-2" style="margin-top:10px">
+    <div class="t-card">
+      <h3 style="margin-bottom:6px">LP Lock</h3>
+      <p class="muted">Lock proof link yahan update karen jab LP lock ho jaye.</p>
+      <a class="cta secondary" target="_blank" href="#" rel="nofollow">Add LP Lock Link</a>
+    </div>
+
+    <div class="t-card">
+      <h3 style="margin-bottom:6px">Ownership</h3>
+      <p class="muted">Owner renounce / timelock tx link yahan add karein.</p>
+      <a class="cta secondary" target="_blank" href="#" rel="nofollow">Add Owner Tx</a>
+    </div>
+
+    <div class="t-card">
+      <h3 style="margin-bottom:6px">Audit</h3>
+      <p class="muted">Audit report (PDF / site) ka link.</p>
+      <a class="cta secondary" target="_blank" href="#" rel="nofollow">Add Audit</a>
+    </div>
+
+    <div class="t-card">
+      <h3 style="margin-bottom:6px">Community</h3>
+      <p class="muted">Telegram / X follower milestones ya pinned post link.</p>
+      <a class="cta secondary" target="_blank" href="https://t.me/JtcJumptocrypto">Join Telegram</a>
+    </div>
+  </div>
+
+  <style>
+    #transparency .t-card{
+      background:var(--card); border:1px solid var(--line);
+      border-radius:var(--radius); padding:14px
+    }
+  </style>
+</section>
+
 
   <!-- FOOTER -->
   <footer class="wrap footer">
@@ -404,6 +531,35 @@
       }
     },{rootMargin:"200px"});
     obs.observe(iframe);
+<!-- FAQ -->
+<section class="wrap card" id="faq">
+  <h2>FAQ</h2>
+
+  <details style="margin-top:10px">
+    <summary><strong>JTC ka contract address kya hai?</strong></summary>
+    <div class="muted" style="margin-top:8px">
+      0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC (BSC • BEP20)
+    </div>
+  </details>
+
+  <details>
+    <summary><strong>Buy tax / sell tax?</strong></summary>
+    <div class="muted" style="margin-top:8px">0% (jab update ho, yahan change karein).</div>
+  </details>
+
+  <details>
+    <summary><strong>Liquidity locked hai?</strong></summary>
+    <div class="muted" style="margin-top:8px">Lock hone par proof link Transparency section me add hoga.</div>
+  </details>
+
+  <details>
+    <summary><strong>Dex chart kahan milega?</strong></summary>
+    <div class="muted" style="margin-top:8px">
+      Liquidity add ke baad DexScreener embed yahan live ho jayega.
+    </div>
+  </details>
+</section>
+
   </script>
 </body>
 </html>
