@@ -99,7 +99,35 @@
   </header>
 
   <!-- HERO -->
-  <section class="wrap" style="margin-top:20px">
+  <!-- HERO -->
+<section id="hero" style="padding:60px 0; background:linear-gradient(135deg,#0f172a,#1e293b); color:#fff;">
+  <div class="wrap" style="text-align:center;">
+    <!-- anchor so navbar "Buy" (#buy) still works -->
+    <span id="buy"></span>
+
+    <img src="logo.png" alt="JumpToCrypto Logo" width="160" height="160"
+         style="border-radius:50%; box-shadow:0 0 25px rgba(0,0,0,0.5);" loading="lazy" decoding="async">
+
+    <h1 style="font-size:2.5rem; margin:20px 0 10px;">JumpToCrypto (JTC)</h1>
+    <p style="font-size:1.2rem; max-width:640px; margin:0 auto 25px;">
+      🚀 Secure • Fast • Community Driven
+    </p>
+
+    <div class="btns" style="justify-content:center">
+      <a class="cta" target="_blank"
+         href="https://pancakeswap.finance/swap?outputCurrency=0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC&chain=bsc">
+         Buy on PancakeSwap
+      </a>
+      <a class="cta secondary" target="_blank"
+         href="https://bscscan.com/token/0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC">
+         View on BscScan
+      </a>
+      <a class="cta secondary" target="_blank" href="https://t.me/JtcJumptocrypto">Telegram</a>
+      <a class="cta secondary" target="_blank" href="https://twitter.com/">X (Twitter)</a>
+    </div>
+  </div>
+</section>
+
     <div class="hero">
       <div class="token-img card">
         <img src="logo.png" alt="JTC" />
@@ -201,18 +229,126 @@
     </div>
   </section>
 
-  <!-- TOKENOMICS -->
-  <section class="wrap card" id="tokenomics">
-    <h2>Tokenomics</h2>
-    <ul class="clean" style="margin-top:10px">
-      <li>Max Supply: <strong>1,000,000,000 JTC</strong></li>
-      <li>Buy/Sell Tax: <strong>0%</strong> (if different, update here)</li>
-      <li>Liquidity: <strong>XX%</strong> (locked)</li>
-      <li>Marketing/Development: <strong>XX%</strong></li>
-      <li>Team/Advisors: <strong>XX%</strong> (vesting)</li>
-    </ul>
-    <p class="muted" style="margin-top:8px">* Replace XX% with actual figures once finalized.</p>
-  </section>
+<!-- TOKENOMICS -->
+<section class="wrap card" id="tokenomics">
+  <h2>Tokenomics</h2>
+
+  <!-- Quick facts -->
+  <ul class="clean" style="margin-top:10px">
+    <li>Max Supply: <strong>1,000,000,000 JTC</strong></li>
+    <li>Buy/Sell Tax: <strong>0%</strong> (if different, update here)</li>
+  </ul>
+
+  <!-- Donut Chart + Legend -->
+  <div class="grid cols-2" style="align-items:center; margin-top:14px">
+    <!-- Donut: EDIT PERCENTAGES HERE (must sum to 100) -->
+    <div style="display:flex; justify-content:center">
+      <div class="token-donut"
+           style="--liq:60; --mkt:20; --team:10; --air:10;">
+        <div class="token-donut__hole">
+          <div style="font-size:14px; color:var(--muted)">Total</div>
+          <div style="font-weight:700">100%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legend / Breakdown -->
+    <div>
+      <ul class="clean">
+        <li>
+          <span class="legend-dot" style="--dot:#00c2ff"></span>
+          Liquidity (Locked): <strong><span class="p-liq">60%</span></strong>
+        </li>
+        <li>
+          <span class="legend-dot" style="--dot:#16f2b6"></span>
+          Marketing / Development: <strong><span class="p-mkt">20%</span></strong>
+        </li>
+        <li>
+          <span class="legend-dot" style="--dot:#f59e0b"></span>
+          Team / Advisors (Vesting): <strong><span class="p-team">10%</span></strong>
+        </li>
+        <li>
+          <span class="legend-dot" style="--dot:#ef4444"></span>
+          Airdrop / Community: <strong><span class="p-air">10%</span></strong>
+        </li>
+      </ul>
+
+      <p class="muted" style="margin-top:8px">
+        * Upar percentages ko apni final distribution ke mutabiq update kar dein
+        (ensure total <strong>100%</strong>).
+      </p>
+    </div>
+  </div>
+
+  <!-- Inline styles only for this section -->
+  <style>
+    /* Donut */
+    .token-donut{
+      /* Colors */
+      --c-liq:#00c2ff; --c-mkt:#16f2b6; --c-team:#f59e0b; --c-air:#ef4444;
+      /* Cumulative stops */
+      --p1: calc(var(--liq) * 1%);                         /* 0 → liq */
+      --p2: calc((var(--liq) + var(--mkt)) * 1%);          /* liq → mkt */
+      --p3: calc((var(--liq) + var(--mkt) + var(--team)) * 1%); /* → team */
+
+      width: 240px; height: 240px; border-radius: 50%;
+      background:
+        conic-gradient(
+          var(--c-liq) 0 var(--p1),
+          var(--c-mkt) var(--p1) var(--p2),
+          var(--c-team) var(--p2) var(--p3),
+          var(--c-air)  var(--p3) 100%
+        );
+      position: relative;
+      border: 1px solid var(--line);
+    }
+    .token-donut::after{
+      content:"";
+      position:absolute; inset:18%;
+      background:var(--card); border-radius:50%;
+      box-shadow: inset 0 0 0 1px var(--line);
+    }
+    .token-donut__hole{
+      position:absolute; inset:18%;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; z-index:1;
+    }
+    .legend-dot{
+      display:inline-block; width:12px; height:12px; border-radius:50%;
+      background:var(--dot,#888); margin-right:8px; border:1px solid var(--line)
+    }
+    /* Stack on mobile */
+    @media (max-width: 859px){
+      #tokenomics .grid{ grid-template-columns: 1fr !important; }
+    }
+  </style>
+
+  <!-- Sync legend text with inline percentages (optional helper) -->
+  <script>
+    (function(){
+      const root = document.currentScript.closest('#tokenomics')
+                     .querySelector('.token-donut');
+      if(!root) return;
+      const get = v => (getComputedStyle(root).getPropertyValue(v) || '').trim();
+
+      const liq = get('--liq') || '0';
+      const mkt = get('--mkt') || '0';
+      const team = get('--team') || '0';
+      const air = get('--air') || '0';
+
+      const setTxt = (sel,val) => {
+        const el = document.currentScript.closest('#tokenomics').querySelector(sel);
+        if(el) el.textContent = String(val).replace('%','') + '%';
+      };
+      setTxt('.p-liq', liq);
+      setTxt('.p-mkt', mkt);
+      setTxt('.p-team', team);
+      setTxt('.p-air', air);
+    })();
+  </script>
+</section>
+
+
 
   <!-- CHART (add later: replace PAIR_ADDRESS) -->
   <section class="wrap card" id="chart">
