@@ -432,15 +432,14 @@ section[id]{scroll-margin-top:80px}
   <section class="wrap card" id="chart">
     <h2>Live Chart</h2>
     <p class="muted" style="margin:6px 0 12px">
-      Replace <code>PAIR_ADDRESS</code> with your actual pair to enable the embed.
-    </p>
-    <iframe
-      src="about:blank"
-      data-src="https://dexscreener.com/bsc/PAIR_ADDRESS?embed=1&theme=dark"
-      style="width:100%;height:560px;border:0;border-radius:12px"
-      title="DexScreener"
-      loading="lazy"></iframe>
-  </section>
+   <!-- JTC/BNB DexScreener Chart -->
+<div style="position:relative;width:100%;height:600px;">
+  <iframe 
+    src="https://dexscreener.com/bsc/0x2e601638b98a66f58570b13a021992c87e3b44d2?embed=1&theme=dark"
+    style="position:absolute;width:100%;height:100%;border:0;"
+    allowfullscreen>
+  </iframe>
+</div>
 
 <!-- FAQ -->
 <section class="wrap card" id="faq">
