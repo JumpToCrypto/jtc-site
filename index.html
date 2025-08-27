@@ -123,7 +123,7 @@ section[id]{scroll-margin-top:80px}
     <!-- Links -->
     <nav id="navLinks">
       <a href="#buy">Buy</a>
-      <a href="#chart">Chart</a>
+     <a href="https://dexscreener.com/bsc/0x2E601638b98a66f58570b13A021992c87e3B44D2" target="_blank" rel="noopener">Chart</a>
       <a href="#roadmap">Roadmap</a>
       <a href="#tokenomics">Tokenomics</a>
       <a href="#links">Links</a>
@@ -143,7 +143,6 @@ section[id]{scroll-margin-top:80px}
   </style>
 </header>
 
-  <!-- HERO -->
   <!-- HERO -->
 <section id="hero" style="padding:60px 0; background:linear-gradient(135deg,#0f172a,#1e293b); color:#fff;">
   <div class="wrap" style="text-align:center;">
@@ -424,45 +423,55 @@ section[id]{scroll-margin-top:80px}
     })();
   </script>
 </section>
-
-
-  <section class="wrap card" id="chart">
-    <h2>Live Chart</h2>
-    <p class="muted" style="margin:6px 0 12px">
-   <!-- JTC/BNB DexScreener Chart -->
-<div style="position:relative;width:100%;height:600px;">
-  <iframe 
-    src="https://dexscreener.com/bsc/0x2e601638b98a66f58570b13a021992c87e3b44d2?embed=1&theme=dark"
-    style="position:absolute;width:100%;height:100%;border:0;"
-    allowfullscreen>
-  </iframe>
-</div>
-
+  
+<section class="wrap card" id="live-chart">
+  <h2>Live Chart</h2>
+  <div style="height:650px; border-radius:12px; overflow:hidden;">
+    <iframe src="https://dexscreener.com/bsc/0x2E601638b98a66f58570b13A021992c87e3B44D2?embed=1&theme=dark"
+            style="width:100%; height:100%; border:0;" allowfullscreen></iframe>
+  </div>
+</section>
+  
 <!-- FAQ -->
 <section class="wrap card" id="faq">
   <h2>FAQ</h2>
 
-  <details style="margin-top:10px">
-    <summary><strong>JTC ka contract address kya hai?</strong></summary>
+  <details open>
+    <summary><strong>What is the official contract address?</strong></summary>
     <div class="muted" style="margin-top:8px">
-      0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC (BSC • BEP20)
+      <code>0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC</code><br>
+      <a href="https://bscscan.com/token/0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC" target="_blank" rel="noopener">View on BscScan</a>
     </div>
   </details>
 
-  <details>
-    <summary><strong>Buy tax / sell tax?</strong></summary>
-    <div class="muted" style="margin-top:8px">0% (jab update ho, yahan change karein).</div>
-  </details>
-
-  <details>
-    <summary><strong>Liquidity locked hai?</strong></summary>
-    <div class="muted" style="margin-top:8px">Lock hone par proof link Transparency section me add hoga.</div>
-  </details>
-
-  <details>
-    <summary><strong>Dex chart kahan milega?</strong></summary>
+  <details open>
+    <summary><strong>Is there any buy/sell tax?</strong></summary>
     <div class="muted" style="margin-top:8px">
-      Liquidity add ke baad DexScreener embed yahan live ho jayega.
+      0% (recommended slippage: 0.5% – 1%).
+    </div>
+  </details>
+
+  <details open>
+    <summary><strong>Is the liquidity locked?</strong></summary>
+    <div class="muted" style="margin-top:8px">
+      Yes — liquidity is locked. Proof: 
+      <a href="https://bscscan.com/address/0x407993575c91ce7643a4d4cCACc9A98c36eE1BBE" target="_blank" rel="noopener">View LP Lock</a>
+    </div>
+  </details>
+
+  <details open>
+    <summary><strong>Where can I see the live chart?</strong></summary>
+    <div class="muted" style="margin-top:8px">
+      Live price and chart are available on DexScreener: 
+      <a href="https://dexscreener.com/bsc/0x2E601638b98a66f58570b13A021992c87e3B44D2" target="_blank" rel="noopener">View JTC/BNB Chart</a>
+    </div>
+  </details>
+
+  <details open>
+    <summary><strong>Is ownership renounced?</strong></summary>
+    <div class="muted" style="margin-top:8px">
+      This token has <strong>no ownership functions</strong>. The contract is non-upgradeable and has no admin privileges.  
+      <a href="https://bscscan.com/token/0x5c2dB4438e94B7F959F4AC444cC077C4dE2DdBfC#code" target="_blank" rel="noopener">View Verified Code</a>
     </div>
   </details>
 </section>
